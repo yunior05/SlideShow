@@ -1,10 +1,10 @@
 import React from 'react';
-// import './styles.css'; Todo: Css Loader
+import './styles.css'; 
 
 function RenderImages({ images }) {
     return images.map(img => {
-            return <img src={img}></img>
-        })
+        return <img className="slide_image" src={img}></img>
+    })
 }
 
 class SlideShow extends React.Component {
@@ -25,7 +25,7 @@ class SlideShow extends React.Component {
     render() {
         const { images } = this.state;
         return (
-        <div className="slide_container">
+        <div className="slide">
             <RenderImages images={images} />
         </div>)
     }

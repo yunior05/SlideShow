@@ -1,3 +1,12 @@
-.slide_container {
+.slide {
     display: flex;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.slide_image {
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
 }

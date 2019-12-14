@@ -1,33 +1,42 @@
 import React from 'react';
-import './styles.css'; 
-
-function RenderImages({ images }) {
-    return images.map(img => {
-        return <img className="slide_image" src={img}></img>
-    })
-}
+import './styles.css';
 
 class SlideShow extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            images: this.props.images
+            currentImage: 0
         }
 
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(e){
+    handleClick(e) {
+        const { currentImage } = this.state,
+            { value } = e.target;
+
         e.preventDefault();
-        this.setState({ currentImage: this.state.currentImage + 1});
+        e.stopPropagation();
+        this.setState({ currentImage: currentImage + parseInt(value) });
     }
 
     render() {
-        const { images } = this.state;
+        const { currentImage } = this.state,
+            { images } = this.props,
+            imgIndex = Math.abs(currentImage % images.length);
+
         return (
-        <div className="slide">
-            <RenderImages images={images} />
-        </div>)
+            <div className="slide">
+                <button onClick={this.handleClick} value={-1}>Previous</button>
+                <div className="slide_container">
+                    <div className="slide_images" style={{ marginLeft: imgIndex * -100 + '%' }}>
+                        {images.map(img => {
+                            return <img className="slide_image" src={img}></img>
+                        })}
+                    </div>
+                </div>
+                <button onClick={this.handleClick} value={1}>Next</button>
+            </div>)
     }
 }
 

@@ -5,7 +5,7 @@ import SlideShow from './components/SlideShow/';
 
 class App extends React.Component {
     render() {
-        return <SlideShow images={images} />
+        return <SlideShow images={images} transitionTime={5000} />
     }
 }
 

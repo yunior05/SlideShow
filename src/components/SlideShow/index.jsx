@@ -13,7 +13,7 @@ class SlideShow extends React.Component {
     }
 
     componentDidMount() {
-        const { transitionTime } = this.props;
+        const { transitionTime = 3000 } = this.props;
 
         this.interval = setInterval(() => {
             const { currentImage } = this.state;
@@ -53,7 +53,7 @@ class SlideShow extends React.Component {
 }
 
 SlideShow.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
     transitionTime: PropTypes.number
 }
 

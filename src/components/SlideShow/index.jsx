@@ -39,7 +39,8 @@ class SlideShow extends React.Component {
 
         return (
             <div className="slide">
-                <button className="slide_button left" onClick={this.handleClick} value={-1}>{"<<"}</button>
+                <div className="slide_number">{`${imgIndex + 1}/${images.length}`}</div>
+                <button className="slide_button left" onClick={this.handleClick} value={-1}></button>
                 <div className="slide_container">
                     <div className="slide_images" style={{ marginLeft: imgIndex * -100 + '%' }}>
                         {images.map(img => {
@@ -47,7 +48,7 @@ class SlideShow extends React.Component {
                         })}
                     </div>
                 </div>
-                <button className="slide_button right" onClick={this.handleClick} value={1}>{">>"}</button>
+                <button className="slide_button right" onClick={this.handleClick} value={1}></button>
             </div>)
     }
 }
